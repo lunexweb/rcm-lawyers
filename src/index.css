@@ -1,0 +1,309 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 40 20% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 38 65% 55%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 40 20% 95%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 38 65% 55%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 40 20% 95%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 38 65% 55%;
+
+    --radius: 0.5rem;
+
+    /* Premium design tokens */
+    --gold-glow: 38 65% 55%;
+    --gold-subtle: 38 45% 35%;
+    --cream: 40 20% 95%;
+    --luxury-white: 0 0% 98%;
+    --luxury-white-soft: 0 0% 96%;
+    --dark-blue: 220 100% 20%;
+    --dark-blue-soft: 220 100% 25%;
+    --blue-accent: 220 100% 60%;
+    --blue-accent-soft: 220 100% 70%;
+    --dark-red: 0 70% 40%;
+    --red-accent: 0 70% 55%;
+    --red-soft: 0 70% 65%;
+    
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(38 65% 55% / 0.2), hsl(38 65% 55% / 0.05));
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 7%), hsl(0 0% 4%));
+    --gradient-luxury: linear-gradient(135deg, hsl(0 0% 98%), hsl(0 0% 96%));
+    
+    /* Shadows */
+    --shadow-gold: 0 10px 40px -10px hsl(38 65% 55% / 0.3);
+    --shadow-glow: 0 0 60px hsl(38 65% 55% / 0.2);
+    --shadow-luxury: 0 20px 60px -10px hsl(0 0% 0% / 0.1);
+    
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Prevent horizontal scroll on all elements */
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    /* Prevent mobile zoom and layout shifts */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    /* Prevent mobile layout shifts */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent mobile bounce */
+    overscroll-behavior: none;
+    /* Prevent mobile zoom on input focus */
+    touch-action: manipulation;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    /* Prevent mobile text shifting */
+    line-height: 1.2;
+  }
+
+  /* Ensure all containers stay within viewport */
+  * {
+    max-width: 100%;
+    /* Prevent mobile layout shifts */
+    box-sizing: border-box;
+  }
+
+  /* Ensure images don't cause overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+    /* Prevent mobile image shifting */
+    display: block;
+  }
+
+  /* Fix container to prevent overflow */
+  .container {
+    max-width: 100%;
+    overflow-x: hidden;
+    /* Prevent mobile container shifting */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Mobile-specific fixes */
+  @media (max-width: 768px) {
+    /* Prevent mobile text from being too small */
+    html {
+      font-size: 16px;
+    }
+    
+    /* Prevent mobile layout shifts from animations */
+    * {
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+    
+    /* Fix mobile button touch targets */
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Prevent mobile input zoom */
+    input, textarea, select {
+      font-size: 16px;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(38 65% 65%), hsl(38 65% 45%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .gold-glow {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .luxury-white-bg {
+    background: hsl(var(--luxury-white));
+    color: hsl(0 0% 15%);
+  }
+
+  .luxury-white-bg h1,
+  .luxury-white-bg h2,
+  .luxury-white-bg h3,
+  .luxury-white-bg h4,
+  .luxury-white-bg h5,
+  .luxury-white-bg h6 {
+    color: hsl(0 0% 10%);
+  }
+
+  .luxury-white-bg .text-muted-foreground {
+    color: hsl(0 0% 35%);
+  }
+
+  .luxury-white-soft-bg {
+    background: hsl(var(--luxury-white-soft));
+    color: hsl(0 0% 15%);
+  }
+
+  .luxury-white-soft-bg h1,
+  .luxury-white-soft-bg h2,
+  .luxury-white-soft-bg h3,
+  .luxury-white-soft-bg h4,
+  .luxury-white-soft-bg h5,
+  .luxury-white-soft-bg h6 {
+    color: hsl(0 0% 10%);
+  }
+
+  .luxury-white-soft-bg .text-muted-foreground {
+    color: hsl(0 0% 35%);
+  }
+
+  .luxury-gradient {
+    background: var(--gradient-luxury);
+    color: hsl(0 0% 15%);
+  }
+
+  .luxury-gradient h1,
+  .luxury-gradient h2,
+  .luxury-gradient h3,
+  .luxury-gradient h4,
+  .luxury-gradient h5,
+  .luxury-gradient h6 {
+    color: hsl(0 0% 10%);
+  }
+
+  .luxury-gradient .text-muted-foreground {
+    color: hsl(0 0% 35%);
+  }
+
+  .luxury-shadow {
+    box-shadow: var(--shadow-luxury);
+  }
+
+  .dark-blue-bg {
+    background: hsl(var(--dark-blue));
+  }
+
+  .dark-blue-soft-bg {
+    background: hsl(var(--dark-blue-soft));
+  }
+
+  .text-dark-blue {
+    color: hsl(var(--dark-blue));
+  }
+
+  .border-dark-blue {
+    border-color: hsl(var(--dark-blue));
+  }
+
+  .text-blue-accent {
+    color: hsl(var(--blue-accent));
+  }
+
+  .text-blue-accent-soft {
+    color: hsl(var(--blue-accent-soft));
+  }
+
+  .dark-red-bg {
+    background: hsl(var(--dark-red));
+  }
+
+  .text-dark-red {
+    color: hsl(var(--dark-red));
+  }
+
+  .text-red-accent {
+    color: hsl(var(--red-accent));
+  }
+
+  .text-red-soft {
+    color: hsl(var(--red-soft));
+  }
+
+  .border-red-accent {
+    border-color: hsl(var(--red-accent));
+  }
+
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-20 xl:py-32;
+  }
+
+  /* Responsive utilities to prevent overflow */
+  .responsive-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+
+  .responsive-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Mobile stability utilities */
+  .mobile-stable {
+    @apply transform-gpu;
+    will-change: auto;
+  }
+
+  .mobile-text-stable {
+    @apply text-base leading-relaxed;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .mobile-button-stable {
+    @apply min-h-[44px] min-w-[44px] px-4 py-2;
+    touch-action: manipulation;
+  }
+}
