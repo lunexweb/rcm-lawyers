@@ -149,7 +149,3 @@ vite.config.ts.timestamp-*
 *.njsproj
 *.sln
 *.sw?
-
-# Local development
-*.local
-dist-ssr
