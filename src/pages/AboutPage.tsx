@@ -162,7 +162,7 @@ const AboutPage = () => {
               ))}
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       <Footer />
