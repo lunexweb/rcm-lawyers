@@ -72,7 +72,7 @@ const ContactPage = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background"></div>
         <div className="absolute inset-0 bg-black/30"></div>
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 bg-image-stable"
           style={{
             backgroundImage: "url('https://res.cloudinary.com/dnnwvmh3n/image/upload/v1759698885/buildings-205986_1280_sqhcg4.jpg')"
           }}

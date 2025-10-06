@@ -76,7 +76,7 @@ const PracticeAreasPage = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/10 to-background"></div>
         <div className="absolute inset-0 bg-black/20"></div>
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 bg-image-stable"
           style={{
             backgroundImage: "url('https://res.cloudinary.com/dnnwvmh3n/image/upload/v1759698672/hammer-802298_1280_sctxpn.jpg')"
           }}

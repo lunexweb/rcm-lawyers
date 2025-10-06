@@ -119,7 +119,7 @@ const TeamPage = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background"></div>
         <div className="absolute inset-0 bg-black/20"></div>
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 bg-image-stable"
           style={{
             backgroundImage: "url('https://res.cloudinary.com/dnnwvmh3n/image/upload/v1759698992/conference-1886021_1280_ejw2ij.jpg')"
           }}
@@ -322,7 +322,7 @@ const TeamPage = () => {
           className="text-center mb-12 sm:mb-16 relative"
         >
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25 -z-10"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25 -z-10 bg-image-stable"
             style={{
               backgroundImage: "url('https://res.cloudinary.com/dnnwvmh3n/image/upload/v1759699102/people-2569234_1280_fuoodb.jpg')"
             }}
@@ -413,7 +413,7 @@ const TeamPage = () => {
       {/* Team Values Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-background via-background/95 to-primary/5 relative overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5 bg-image-stable"
           style={{
             backgroundImage: "url('https://res.cloudinary.com/dnnwvmh3n/image/upload/v1759698530/ai-generated-8862441_1280_bccifz.jpg')"
           }}

@@ -1,8 +1,7 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Award, Target, Users2, TrendingUp, Globe, Clock } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { useRef } from "react";
 
 const values = [
   {
@@ -30,14 +29,6 @@ const stats = [
 ];
 
 const AboutPage = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
 
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -105,15 +96,15 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Story Section with Parallax */}
-      <section ref={containerRef} className="section-padding relative overflow-hidden">
+      {/* Story Section */}
+      <section className="section-padding relative overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10 bg-image-stable"
           style={{
             backgroundImage: "url('https://res.cloudinary.com/dnnwvmh3n/image/upload/v1759698607/legal-5293006_1280_mok8ur.jpg')"
           }}
         ></div>
-        <motion.div style={{ y, opacity }} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Scale, ArrowRight, Award, Users2, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useScrollEffects } from "@/hooks/use-scroll-effects";
 
 const highlights = [
   {
@@ -31,20 +32,22 @@ const highlights = [
 ];
 
 const Index = () => {
+  const { scrollProgress } = useScrollEffects();
+
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden scroll-luxury">
       <Navigation />
       <Hero />
 
       {/* Why Choose Us Section */}
-      <section className="section-padding luxury-gradient">
+      <section className="section-padding luxury-gradient scroll-section">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12 sm:mb-16"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center mb-12 sm:mb-16 gpu-accelerated"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4 leading-tight">
               Why Choose <span className="text-gradient-gold">RMC Attorneys</span>
@@ -61,13 +64,18 @@ const Index = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
+                className="gpu-accelerated"
               >
-                <Card className="p-4 sm:p-6 luxury-white-bg border-border/30 hover:border-primary/50 transition-all duration-500 group text-center h-full luxury-shadow">
+                <Card className="p-4 sm:p-6 luxury-white-bg border-border/30 hover:border-primary/50 luxury-transition group text-center h-full luxury-shadow hover:shadow-2xl hover:-translate-y-2">
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="mb-4 inline-block"
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="mb-4 inline-block gpu-accelerated"
                   >
                     <highlight.icon className="w-10 h-10 sm:w-12 sm:h-12 text-dark-blue" />
                   </motion.div>
@@ -82,8 +90,8 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center"
+            transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+            className="text-center gpu-accelerated"
           >
             <Link to="/about">
               <Button variant="premium" size="lg" className="group mobile-button-stable">
@@ -96,10 +104,10 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding relative overflow-hidden">
+      <section className="section-padding relative overflow-hidden scroll-section">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10"></div>
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 bg-image-stable"
           style={{
             backgroundImage: "url('https://res.cloudinary.com/dnnwvmh3n/image/upload/v1759698576/lady-justice-2388500_1280_jitsfs.jpg')"
           }}
@@ -108,8 +116,8 @@ const Index = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 gpu-accelerated"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-4 sm:mb-6 leading-tight">
             Ready to Experience <span className="text-gradient-gold">Excellence?</span>
@@ -118,10 +126,14 @@ const Index = () => {
             Schedule a confidential consultation with our distinguished legal team today.
           </p>
           <Link to="/contact">
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              <Button variant="premium" size="lg" className="shadow-lg mobile-button-stable">
+            <motion.div 
+              whileHover={{ scale: 1.02 }} 
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            >
+              <Button variant="premium" size="lg" className="shadow-lg mobile-button-stable luxury-transition hover:shadow-2xl">
                 Contact Us Today
-                <ArrowRight className="ml-2" />
+                <ArrowRight className="ml-2 luxury-transition group-hover:translate-x-1" />
               </Button>
             </motion.div>
           </Link>
